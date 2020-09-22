@@ -1,9 +1,15 @@
+- name: cloudtack-setup-databases
+  shell: cloudstack-setup-databases cloud:cloud123@localhost --deploy-as=root && cloudstack-setup-management && touch /etc/cloudstack/db_created
+  args:
+    creates:
+      /etc/cloudstack/db_created
+
 - name: Start CloudStack Management Service
   service:
-     name: "{{ role_app_acs_mgmt_service }}"
-     state: started
+    name: "{{ role_app_acs_mgmt_service }}"
+    state: started
 
 - name: Enable CloudStack Management Service.
   service:
-     name: "{{ role_app_acs_mgmt_service }}"
-     enabled: yes
+    name: "{{ role_app_acs_mgmt_service }}"
+    enabled: yes
