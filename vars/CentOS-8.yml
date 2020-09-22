@@ -1,0 +1,7 @@
+role_app_acs_mgmt_packages:
+  # - cloudstack-management
+  - python2
+  - python2-dns
+  - python2-setuptools
+    # - mysql-connector-python
+role_app_acs_mgmt_service: cloudstack-management
