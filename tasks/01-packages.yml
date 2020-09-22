@@ -1,0 +1,14 @@
+- name: Install ACS requirements.
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    "{{ role_app_acs_mgmt_packages }}"
+
+- name: Copy Cloudstack RPM
+  get_url:
+    url: "http://packages.shapeblue.com.s3-eu-west-1.amazonaws.com/cloudstack/upstream/centos7/4.14/cloudstack-management-4.14.0.0-shapeblue0.el7.x86_64.rpm"
+    dest: "/temp/cloudstack-management-4.14.0.0-shapeblue0.el7.x86_64.rpm"
+
+- name: Install CloudStack RPM
+  shell: rpm -ivh /temp/cloudstack-management-4.14.0.0-shapeblue0.el7.x86_64.rpm
