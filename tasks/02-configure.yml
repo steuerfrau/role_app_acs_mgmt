@@ -1,8 +1,20 @@
 - name: cloudtack-setup-databases
-  shell: cloudstack-setup-databases cloud:cloud123@localhost --deploy-as=root && cloudstack-setup-management && touch /etc/cloudstack/db_created
+  shell: cloudstack-setup-databases cloud:cloud123@localhost --deploy-as=root && touch /etc/ansible_state/cloudstack_setup_databases_ready
   args:
     creates:
-      /etc/cloudstack/db_created
+      /etc/ansible_state/cloudstack_setup_databases_ready
+
+- name: cloudstack-setup-management
+  shell: cloudstack-setup-management && touch /etc/ansible_state/cloudstack_setup_management_ready
+  args:
+    creates:
+      /etc/ansible_state/cloudstack_setup_management_ready
+
+- name: cloudtack-setup-templates
+  shell: /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt -m /export/secondary -u http://download.cloudstack.org/systemvm/4.14/systemvmtemplate-4.14.0-kvm.qcow2.bz2 -h kvm -F && touch /etc/ansible_state/cloudstack_setup_templates_ready
+  args:
+    creates:
+      /etc/ansible_state/cloudstack_setup_templates_ready
 
 - name: Start CloudStack Management Service
   service:

@@ -1,2 +1,5 @@
 role_app_acs_mgmt_package: cloudstack-management
 role_app_acs_mgmt_service: cloudstack-management
+role_app_acs_mgmt_extra_pkgs:
+  - python2-PyMySQL
+  - python36-PyMySQL

@@ -2,3 +2,10 @@
   package:
     name: "{{ role_app_acs_mgmt_package }}"
     state: present
+
+- name: Install base packages.
+  package:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ role_app_acs_mgmt_extra_pkgs }}"
+
