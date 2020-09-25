@@ -1,5 +1,5 @@
 ---
-# tasks file for role_bi_packages_minimum
+# tasks file for role_app_acs_mgmt
 - name: Gather OS specific variables
   include_vars: "{{ item }}"
   with_first_found:
@@ -17,9 +17,26 @@
     var: hostvars[inventory_hostname]
   tags: [ never, debug ]
 
-- name: Install role_bi_packages_minimum
+- name: Install role_app_acs_mgmt
   include: 01-packages.yml
 
-- name: Configure role_bi_packages_minimum
-  include: 02-configure.yml
+- name: Setup database and cloudstack management service
+  include: 10-setup-db-and-management.yml
+
+- name: Install CloudStack system template.
+  include: 11-setup-systemplate.yml
+
+- name: Start and enable CloudStack services.
+  include: 12-start-services.yml
+
+- block:
+    - name: Reset Cloudstack management and databases
+      include: 20-reset-db-and-management.yml
+    - name: Stop Cloudstack services.
+      include: 21-stop-services.yml
+    - name: Setup database and cloudstack management service
+      include: 10-setup-db-and-management.yml
+    - name: Start and enable CloudStack services.
+      include: 12-start-services.yml
+  tags: [ never, reset_acs_mgmt ]
 

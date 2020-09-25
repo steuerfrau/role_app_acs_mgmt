@@ -1,0 +1,15 @@
+- name: Assure Ansible locks directory exists
+  file:
+    name: /etc/cloudstack_ansible_locks
+    state: directory
+
+- name: cloudtack-setup-databases
+  shell: cloudstack-setup-databases cloud:{{ role_app_acs_mgmt_databasepassword }}@localhost --deploy-as=root && touch /etc/cloudstack_ansible_locks/databases_ready
+  args:
+    creates:
+      /etc/cloudstack_ansible_locks/databases_ready
+- name: cloudstack-setup-management
+  shell: cloudstack-setup-management && touch /etc/cloudstack_ansible_locks/management_ready
+  args:
+    creates:
+      /etc/cloudstack_ansible_locks/management_ready

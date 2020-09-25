@@ -1,0 +1,37 @@
+- name: Drop CloudStack Databases
+  community.mysql.mysql_db:
+    name:
+      - cloud
+      - cloud_usage
+    state: absent
+
+- name: Delete old CloudStack logfiles
+  file:
+    path: /var/log/cloudstack/
+    state: absent
+
+- name: Ensure /var/log/cloudstack exists.
+  file:
+    path: /var/log/cloudstack
+    state: directory
+    owner: root
+    group: root
+    mode: "755"
+
+- name: Ensure /var/log/cloudstack/management exists.
+  file:
+    path: /var/log/cloudstack/management
+    state: directory
+    owner: cloud
+    group: cloud
+    mode: "770"
+
+- name: Delete /etc/cloudstack_ansible_locks/management_ready
+  file:
+    path: /etc/cloudstack_ansible_locks/management_ready
+    state: absent
+
+- name: Delete /etc/cloudstack_ansible_locks/databases_ready
+  file:
+    path: /etc/cloudstack_ansible_locks/databases_ready
+    state: absent

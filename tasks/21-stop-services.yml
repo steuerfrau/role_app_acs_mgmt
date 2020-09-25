@@ -1,0 +1,9 @@
+- name: Stop CloudStack Management Service
+  service:
+    name: "{{ role_app_acs_mgmt_service }}"
+    state: stopped
+
+- name: Disable CloudStack Management Service.
+  service:
+    name: "{{ role_app_acs_mgmt_service }}"
+    enabled: no

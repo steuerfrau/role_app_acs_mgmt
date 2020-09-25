@@ -1,10 +1,13 @@
+- name: Assure Ansible locks directory exists
+  file:
+    name: /etc/cloudstack_ansible_locks
+    state: directory
+
 - name: cloudtack-setup-templates
   shell: >-
     /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt
     -m /export/secondary -u http://download.cloudstack.org/systemvm/4.14/systemvmtemplate-4.14.0-kvm.qcow2.bz2 -h kvm -F
-    && touch /etc/ansible_state/cloudstack_setup_templates_ready
+    && touch /etc/cloudstack_ansible_locks/templates_ready
   args:
     creates:
-      /etc/ansible_state/cloudstack_setup_templates_ready
-
-# Additional steps in role_app_acs_mgmt_init
+      /etc/cloudstack_ansible_locks/templates_ready

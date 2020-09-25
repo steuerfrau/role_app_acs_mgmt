@@ -1,0 +1,9 @@
+- name: Start CloudStack Management Service
+  service:
+    name: "{{ role_app_acs_mgmt_service }}"
+    state: started
+
+- name: Enable CloudStack Management Service.
+  service:
+    name: "{{ role_app_acs_mgmt_service }}"
+    enabled: yes
