@@ -1,0 +1,5 @@
+- name: Include Post-Subroles.
+  include_role:
+    name: "{{ item }}"
+  with_fileglob:
+    - "./roles_post/*"

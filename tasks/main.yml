@@ -17,6 +17,9 @@
     var: hostvars[inventory_hostname]
   tags: [ never, debug ]
 
+- name: Install Subroles-Pre.
+  include: 50-subroles-pre.yml
+
 - name: Install role_app_acs_mgmt
   include: 01-packages.yml
 

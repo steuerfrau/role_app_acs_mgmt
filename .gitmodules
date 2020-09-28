@@ -1,0 +1,8 @@
+[submodule "roles-pre/role_mod_repositories"]
+	path = roles-pre/role_mod_repositories
+	url = git@github.com:steuerfrau/role_mod_repositories.git
+	branch = prod
+[submodule "subroles/role_mod_repositories"]
+	path = subroles/role_mod_repositories
+	url = git@github.com:steuerfrau/role_mod_repositories.git
+	branch = prod
