@@ -3,6 +3,8 @@
     name:
       - cloud
       - cloud_usage
+    login_user: root
+    login_password: "{{ role_app_acs_mgmt_databasepassword }}"
     state: absent
 
 - name: Delete old CloudStack logfiles

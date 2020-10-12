@@ -2,6 +2,8 @@ Role Name
 =========
 
 A brief description of the role goes here.
+In /etc/cloudstack/management/db.properties 
+/etc/cloudstack/management/db.properties:cluster.node.IP=192.168.122.40
 
 Requirements
 ------------
