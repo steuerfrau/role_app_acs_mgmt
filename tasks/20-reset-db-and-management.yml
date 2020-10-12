@@ -26,12 +26,12 @@
     group: cloud
     mode: "770"
 
-- name: Delete /etc/cloudstack_ansible_locks/management_ready
+- name: Delete /etc/ansible_locks/management_ready
   file:
-    path: /etc/cloudstack_ansible_locks/management_ready
+    path: /etc/ansible_locks/management_ready
     state: absent
 
-- name: Delete /etc/cloudstack_ansible_locks/databases_ready
+- name: Delete /etc/ansible_locks/databases_ready
   file:
-    path: /etc/cloudstack_ansible_locks/databases_ready
+    path: /etc/ansible_locks/databases_ready
     state: absent
