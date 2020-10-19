@@ -1,4 +1,4 @@
-role_app_acs-mgmt
+role_app_acs_mgmt
 ============
 Installs a Cloudstack Management Node, according to:
 
